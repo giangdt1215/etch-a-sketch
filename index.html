@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch a Sketch</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/mycss.css" type="text/css">
+</head>
+<body>
+    <h1 id="etch-title">Etch-A-Sketch</h1>
+    <div class="choices">
+        <button id="eraser" type="button">Eraser</button>
+        <label for="color-pick">Color:</label>
+        <input id="color-pick" type="color"></input>
+        <label for="grid-size">Grid-size:</label>
+        <input type="number" max="100" min="1" value="16">
+        <button id="clear"  type="button">Clear</button>
+    </div>
+    <div id="grid-container">
+        <div id="container">
+            <div id="grid"></div>
+            <div id="grid"></div>
+            <div id="grid"></div>
+            <div id="grid"></div>
+            <div id="grid"></div>
+            <div id="grid"></div>
+            <div id="grid"></div>
+            <div id="grid"></div>
+            <div id="grid"></div>
+        </div>
+    </div>
+
+    <script src="js/myjs.js"></script>
+</body>
+</html>
