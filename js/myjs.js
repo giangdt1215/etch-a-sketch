@@ -1,7 +1,11 @@
 let clearBtn = document.getElementById('clear');
 let gridPick = document.getElementById('grid-pick');
+let eraserBtn = document.getElementById('eraser');
+let colorPick = document.getElementById('color-pick');
 let gridContainer = document.getElementById('container');
+
 let defaultGrid = 16;
+let color = colorPick.value;
 
 gridContainer.style.gridTemplateColumns = `repeat(${defaultGrid}, 1fr)`;
 gridContainer.style.gridTemplateRows = `repeat(${defaultGrid}, 1fr)`;
@@ -17,12 +21,14 @@ window.onload = function(){
 // create grid
 function createGrid(gridSize){
     clearGrid();
+    color = colorPick.value;
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
     gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
     
     for(let i = 0; i < gridSize * gridSize; i++){
         let grid = document.createElement('div');
         grid.id = 'grid';
+        grid.addEventListener('mouseover', changeBackground);
         gridContainer.appendChild(grid);
     }
 }
@@ -32,6 +38,12 @@ function clearGrid(){
     while(gridContainer.hasChildNodes()){
         gridContainer.removeChild(gridContainer.firstChild);
     }
+}
+
+// chang grid's background
+function changeBackground(event){
+    event.preventDefault();
+    event.target.style.background = color;
 }
 
 // click event on button
@@ -58,4 +70,15 @@ gridPick.addEventListener('change', (event) => {
     }
 
     createGrid(parseInt(gridSize));
-})
+});
+
+eraserBtn.addEventListener('click', () => {
+    color = '#fff';
+});
+
+colorPick.addEventListener('click', () => {
+    color = colorPick.value;
+});
+colorPick.addEventListener('change', () => {
+    color = colorPick.value;
+});
